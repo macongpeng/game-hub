@@ -16,12 +16,14 @@ const useData = <T>(endpoint: string) => {
       const controller = new AbortController();
 
       setLoading(true);
+      console.log(`isLoading ${endpoint} ${isLoading}`);
       apiClient
         .get<DataResponse<T>>(endpoint, { signal: controller.signal })
         .then((res) => {
           // console.log(res.data.results); // Ensure the correct field name
           setData(res.data.results);
           setLoading(false);
+          console.log(`isLoading ${endpoint} ${isLoading}`);
         })
         .catch((err) => {
             if (!(err instanceof CanceledError)) {
@@ -31,7 +33,7 @@ const useData = <T>(endpoint: string) => {
         });
 
         return () => controller.abort(); 
-    }, []); 
+    }, [endpoint, isLoading]); 
 
     return {data, error, isLoading};    
 }
