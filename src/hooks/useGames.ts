@@ -5,6 +5,7 @@ import { CanceledError } from "axios";
 export interface Game {
     id: number;
     name: string;
+    background_image: string;
   }
 
 
@@ -26,7 +27,7 @@ const useGames = () => {
           setGames(res.data.results);
         })
         .catch((err) => {
-            if (err instanceof CanceledError) {
+            if (!(err instanceof CanceledError)) {
                 setError(err.message);
               }
         });
