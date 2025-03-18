@@ -25,7 +25,7 @@ class APIClient<T> {
         this.endpoint = endpoint;
     }
 
-    getAll(config:AxiosRequestConfig) {
+    getAll(config?: AxiosRequestConfig) {
         const controller = new AbortController();
         const request = axiosInstance.get<DataResponse<T>>(this.endpoint, config).then(res => res.data);
         return { request, cancel: () => controller.abort() };
