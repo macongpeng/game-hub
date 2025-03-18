@@ -5,7 +5,7 @@ import GenreList from "./components/GenreList";
 import { useState } from "react";
 import { Genre } from "./services/genresService";
 import PlatformSelector from "./components/PlatformSelector";
-import { Platform } from "./services/gameService";
+import { Platform } from "./services/platformService";
 import SortSelector from "./components/SortSelector";
 import GameHeading from "./components/GameHeading";
 export interface GameQuery {

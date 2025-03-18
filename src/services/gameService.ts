@@ -1,10 +1,5 @@
 import APIClient from "./apiClient";
-
-export interface Platform {
-    id: number;
-    name: string;
-    slug: string;
-}
+import { Platform } from "./platformService";
 
 export interface Game {
     id: number;
