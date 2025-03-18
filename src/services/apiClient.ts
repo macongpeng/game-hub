@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios, { AxiosRequestConfig } from "axios";
 
 const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
 
@@ -23,12 +23,9 @@ class APIClient<T> {
         this.endpoint = endpoint;
     }
 
-    getAll(params?: Record<string, unknown>) {
+    getAll(config?: AxiosRequestConfig) {
         const controller = new AbortController();
-        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, { 
-            params,
-            signal: controller.signal 
-        }).then(res => res.data);
+        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, config).then(res => res.data);
         return { request, cancel: () => controller.abort() };
     }
 
