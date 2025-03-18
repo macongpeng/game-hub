@@ -13,14 +13,13 @@ export interface GameQuery {
   platform: Platform | null;
   sort: string | null;
   searchText: string;
+  pageSize: number;
 }
 
 function App() {
-  const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
-  // const [selectedGenre, setSelectedGenre] = useState<Genre | null>(null);
-  // const [selectedPlatform, setSelectedPlatform] = useState<Platform | null>(
-  //   null
-  // );
+  const [gameQuery, setGameQuery] = useState<GameQuery>({
+    pageSize: 6,
+  } as GameQuery);
 
   return (
     <>

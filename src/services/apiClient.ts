@@ -1,10 +1,12 @@
-import axios, { AxiosRequestConfig } from "axios";
+import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_RAWG_API_KEY;
 
 // Interface for the RAWG API response structure
 export interface DataResponse<T> {
     count: number;
+    next: string | null;
+    previous: string | null;
     results: T[];
 }
 
@@ -23,9 +25,12 @@ class APIClient<T> {
         this.endpoint = endpoint;
     }
 
-    getAll(config?: AxiosRequestConfig) {
+    getAll(params?: Record<string, unknown>) {
         const controller = new AbortController();
-        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, config).then(res => res.data);
+        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, { 
+            params,
+            signal: controller.signal 
+        }).then(res => res.data);
         return { request, cancel: () => controller.abort() };
     }
 
