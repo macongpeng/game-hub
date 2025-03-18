@@ -23,9 +23,12 @@ class APIClient<T> {
         this.endpoint = endpoint;
     }
 
-    getAll() {
+    getAll(params?: Record<string, unknown>) {
         const controller = new AbortController();
-        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, { signal: controller.signal }).then(res => res.data);
+        const request = axiosInstance.get<DataResponse<T>>(this.endpoint, { 
+            params,
+            signal: controller.signal 
+        }).then(res => res.data);
         return { request, cancel: () => controller.abort() };
     }
 

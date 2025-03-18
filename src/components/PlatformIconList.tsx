@@ -8,10 +8,9 @@ import {
 import { MdPhoneIphone } from "react-icons/md";
 import { SiNintendo } from "react-icons/si";
 import { BsGlobe } from "react-icons/bs";
-import { Icon } from "@chakra-ui/react";
+import { Icon, HStack } from "@chakra-ui/react";
 import { IconType } from "react-icons";
-import { Platform } from "../hooks/useGames";
-import { HStack } from "@chakra-ui/react";
+import { Platform } from "../services/gameService";
 
 interface Props {
   platforms: Platform[];
