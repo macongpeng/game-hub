@@ -20,7 +20,7 @@ const useGames = (gameQuery: GameQuery | null) => {
       return response;
     },
     initialPageParam: 1,
-    staleTime: 10000, // 10 seconds
+    staleTime: 24 * 60 * 60 * 1000, // 1 day
     getNextPageParam: (lastPage, allPages) => {
       // Check if there are more results
       return lastPage.next ? allPages.length + 1 : undefined;
