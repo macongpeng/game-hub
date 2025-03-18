@@ -11,8 +11,8 @@ const useGames = (gameQuery: GameQuery | null) => {
       const response = await gameService.getAll({
         params: {
           page: pageParam,
-          genres: gameQuery?.genre?.id,
-          parent_platforms: gameQuery?.platform?.id,
+          genres: gameQuery?.genreId,
+          parent_platforms: gameQuery?.platformId,
           ordering: gameQuery?.sort,
           search: gameQuery?.searchText,
         }
