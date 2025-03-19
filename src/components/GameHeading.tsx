@@ -1,5 +1,6 @@
 import { Heading } from "@chakra-ui/react";
 import { GameQuery } from "../App";
+import useLookupEntity from "../hooks/useLookupEntity";
 import useGenres from "../hooks/useGenres";
 import usePlatform from "../hooks/usePlatform";
 
@@ -10,9 +11,11 @@ interface Props {
 const GameHeading = ({ gameQuery }: Props) => {
   const { data: genres } = useGenres();
   const { data: platforms } = usePlatform();
-  const heading = `${
-    platforms?.find((p) => p.id === gameQuery.platformId)?.name || ""
-  } ${genres?.find((g) => g.id === gameQuery.genreId)?.name || ""} ${
+
+  const genre = useLookupEntity(genres, gameQuery.genreId);
+  const platform = useLookupEntity(platforms, gameQuery.platformId);
+
+  const heading = `${platform?.name || ""} ${genre?.name || ""} ${
     gameQuery.searchText || ""
   }`;
 
