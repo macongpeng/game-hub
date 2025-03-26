@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
-import genresService, { Genre } from "../services/genresService";
+import genresService from "../services/genresService";
+import { Genre } from "../data/genres";
 import genres from "../data/genres";
 import ms from "ms";
 const useGenres = () => useQuery<Genre[], Error>({
