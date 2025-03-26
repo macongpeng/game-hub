@@ -31,6 +31,12 @@ class APIClient<T> {
         return { request, cancel: () => controller.abort() };
     }
 
+    get(id: string | number, config?: AxiosRequestConfig) {
+        const controller = new AbortController();
+        const request = axiosInstance.get<T>(`${this.endpoint}/${id}`, config).then(res => res.data);
+        return { request, cancel: () => controller.abort() };
+    }
+
     async post(data: T) {
         const res = await axiosInstance.post<T>(this.endpoint, data);
         return res.data;
