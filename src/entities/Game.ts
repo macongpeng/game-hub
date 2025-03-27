@@ -1,7 +1,7 @@
-import { Genre } from "../data/genres";
-import { Platform } from "./Platform";
-import { Publisher } from "./Publisher";
-export interface Game {
+import Genre from "./Genres";
+import Platform from "./Platform";
+import Publisher from "./Publisher";
+interface Game {
   id: number;
   name: string;
   background_image: string;
@@ -13,3 +13,5 @@ export interface Game {
   metacritic: number;
   rating_top: number;
 }
+
+export default Game;

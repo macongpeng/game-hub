@@ -1,4 +1,4 @@
-export interface Platform {
+interface Platform {
     id: number;
     name: string;
     slug: string;
@@ -13,3 +13,5 @@ export interface Platform {
         year_end: number | null;
     }[];
 }
+
+export default Platform;

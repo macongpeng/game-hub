@@ -3,7 +3,7 @@ import ms from "ms";
 import useGameQueryStore from "../components/stateManagement/gameQueryState";
 import { DataResponse } from "../services/apiClient";
 import gameService from "../services/gameService";
-import { Game } from "../entities/Game";
+import Game from "../entities/Game";
 
 const useGames = () => {
   const gameQuery = useGameQueryStore((s) => s.gameQuery);
